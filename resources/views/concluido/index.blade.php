@@ -70,13 +70,13 @@
                           </div>
 
                     </div> --}}
-                    @if ($idx == 4 )
+
+                      @if ($idx == 4 && $idx > 0 )
                     </div>
                     <div class="row justify-content-md-center">
-
-
                     @endif
-                    </div>
+                </div>
+
                 @endforeach
             </div>
 
