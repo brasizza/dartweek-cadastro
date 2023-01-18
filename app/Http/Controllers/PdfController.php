@@ -23,22 +23,17 @@ class PdfController extends Controller
     public function generate()
     {
         define('FPDF_FONTPATH', getcwd() . '/fonts/');
-
         $certificado = getcwd() . '/pdf/certificadoADF.pdf';
-
         $pdf = new Fpdi();
         $pdf->AddPage();
         $pdf->AddFont('OpenSans-Extrabold', '', 'opensans-extrabold.php');
         $pdf->setSourceFile($certificado);
-
         $tplIdx = $pdf->importPage(1);
         $pdf->setFont('OpenSans-Extrabold');
         $pdf->SetFontSize(50);
         $pdf->useTemplate($tplIdx, 0, 0, null, null, true);
-
         // calculate x and y coordinates for text cell
         $pdf->SetY(130);
-
         // create a cell and position it in the center of the page
         $pdf->Cell(0, 0, $this->nome, 0, 0, 'C');
         $resultado =  $pdf->Output('S');
@@ -47,8 +42,6 @@ class PdfController extends Controller
         unset($pdf);
         file_put_contents($generate, $resultado);
         $token = (hash_file('sha256', ($generate)));
-
-
         $pdf = new Fpdi();
         $pdf->AddPage();
         $pdf->AddFont('OpenSans-Extrabold', '', 'opensans-extrabold.php');
@@ -61,8 +54,7 @@ class PdfController extends Controller
         $pdf->SetFontSize(10);
         // create a cell and position it in the center of the page
         $pdf->Cell(0, 0, $token, 0, 0, 'C');
-
-
+        @unlink($generate);
         return [
 
             'output' => base64_encode($pdf->Output('S')),

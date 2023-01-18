@@ -21,6 +21,7 @@
 </head>
 
 <body>
+
     <div class="container mt-5 text-center ">
         <h3 class="text-center"><strong
                 style="font-family: Roboto, sans-serif; color: rgb(255, 255, 255); font-size: 40px;">Dart Week -
@@ -31,19 +32,23 @@
             <div class="row ">
                 @foreach ($aulas as $idx => $aula)
                     <div class="col-lg-2 m-4 text-center">
-                        <div class="col-lg-12">
+                        <div class="col-12">
                             <img src="{{ $aula['imagem'] }}" alt="image" class="rounded">
                         </div>
-                        <div class="row mt-2">
-                            <div class="col-lg-10">
-                                <div class="form-group ">
-                                    <input type="text" class="form-control codigo" name="codigo_{{ $idx }}" id="codigo_{{$idx}}"
-                                        placeholder=""  onkeyup="validateCode(this.value,'{{$idx}}')" maxlength="4" {{ ($idx == 0 ) ? 'autofocus' : '' }}>
-                                </div>
-                        </div>
-                        <div class="col-lg-2 mt-2"><i class="fa-solid fa-xl fa-hourglass icone_codigo" id="icone_codigo_{{$idx}}" ></i></div>
 
-                        </div>
+                        <div class="container">
+                            <div class="row  mt-4 offset-2 ">
+                              <div class="col-8 col-lg-10">
+                                <input type="text" class="form-control form-control-sm codigo" name="codigo_{{ $idx }}" id="codigo_{{$idx}}"
+                                placeholder=""  onkeyup="validateCode(this.value,'{{$idx}}')" maxlength="4" {{ ($idx == 0 ) ? 'autofocus' : '' }}>
+                              </div>
+                              <div class="col-1 col-lg-1">
+                                <i class="fa-solid fa-xl fa-hourglass icone_codigo" id="icone_codigo_{{$idx}}" ></i>
+                              </div>
+
+                            </div>
+                          </div>
+
                     </div>
 
                     @if ($idx == 2)
