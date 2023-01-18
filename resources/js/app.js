@@ -17,17 +17,13 @@ for (let i = 0; i < hash.length; i += 4) {
         $('.codigo').each(function(index,element) {
 
             stringCompleta = stringCompleta+ $(element).val();
-            if(stringCompleta == '1111'){
-                confirmDialog();
 
-            }else{
             if(stringCompleta == hash){
 
 
                 console.log("OPA IGUAIS!!!!");
                 confirmDialog();
 
-            }
         }
         });
     }
