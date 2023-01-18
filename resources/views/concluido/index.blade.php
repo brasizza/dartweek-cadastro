@@ -10,7 +10,7 @@
         rel="stylesheet">
     <link href="/css/app.css" rel="stylesheet" crossorigin="anonymous">
     <link href="/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <script src="/js/app.js"></script>
+    <script src="/js/app.js?v=2"></script>
 
     <script src="/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
