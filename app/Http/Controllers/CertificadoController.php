@@ -47,7 +47,7 @@ class CertificadoController extends Controller
 
       }catch(Exception $e){
         Log::debug(print_r($e,true));
-        return  $this->errorResponse('FALHA AO ENVIAR EMAIL', 500);
+        return  $this->errorResponse('FALHA AO ENVIAR EMAIL' . print_r($e,true), 500);
       }
 
     }
