@@ -6,6 +6,7 @@ use App\Models\Certificado;
 use App\Traits\ApiResponser;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class CertificadoController extends Controller
@@ -37,19 +38,15 @@ class CertificadoController extends Controller
         $generated = $pdf->generate();
         $this->adicionarCertificado($request->nome,$request->email,$generated['signature']);
         Mail::send('emails.certificado', $data, function($message)use($data, $generated) {
-
             $message->to($data["email"], $data["email"])
-
                     ->subject('SEU CERTIFICADO')
-
                     ->attachData(base64_decode($generated['output']), "certificado.pdf");
-
-
 
         });
         return  $this->successResponse('EMAIL ENVIADO COM SUCESSO!');
 
       }catch(Exception $e){
+        Log::debug(print_r($e,true));
         return  $this->errorResponse('FALHA AO ENVIAR EMAIL', 500);
       }
 
