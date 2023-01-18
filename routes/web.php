@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('landpage.index');
-});
+// Route::get('/', function () {
+//     return view('landpage.index');
+// });
 
 
-Route::get('/concluido' ,[ConclusaoController::class,'index']);
+Route::get('/' ,[ConclusaoController::class,'index']);
 
