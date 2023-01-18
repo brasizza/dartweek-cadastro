@@ -30,11 +30,9 @@ trait ApiResponser{
      * @return Iluminate\Http\JsonResponse
      */
 
-    public function errorResponse($message,$code,$critical = true){
+    public function errorResponse($message,$code){
 
-        if($critical){
-        Log::stack( ['slack', 'stderr'])->critical($message);
-        }
+
         return response()->json(['error' => $message ,'code'=>$code],$code);
     }
 
