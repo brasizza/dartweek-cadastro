@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConclusaoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landpage.index');
 });
+
+
+Route::get('/concluido' ,[ConclusaoController::class,'index']);
+
