@@ -20,7 +20,7 @@ class PdfController extends Controller
     }
 
 
-    public function generate()
+    public function generate($signature = null, $show = false)
     {
         define('FPDF_FONTPATH', getcwd() . '/fonts/');
         $certificado = getcwd() . '/pdf/certificadoADF.pdf';
@@ -41,7 +41,12 @@ class PdfController extends Controller
         $generate = '/tmp/' . $uuid . '.pdf';
         unset($pdf);
         file_put_contents($generate, $resultado);
+
+        if($signature != null){
+            $token = $signature;
+        }else{
         $token = (hash_file('sha256', ($generate)));
+        }
         $pdf = new Fpdi();
         $pdf->AddPage();
         $pdf->AddFont('OpenSans-Extrabold', '', 'opensans-extrabold.php');
@@ -54,7 +59,11 @@ class PdfController extends Controller
         $pdf->SetFontSize(10);
         // create a cell and position it in the center of the page
         $pdf->Cell(0, 0, $token, 0, 0, 'C');
-        @unlink($generate);
+
+        if($show == true){
+            return $pdf->OutPut('D','certificado.pdf');
+        }
+        // @unlink($generate);
         return [
 
             'output' => base64_encode($pdf->Output('S')),

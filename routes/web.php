@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CertificadoController;
 use App\Http\Controllers\ConclusaoController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,5 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/' ,[ConclusaoController::class,'index']);
+Route::get('/certificado' ,[CertificadoController::class,'findBySignature']);
 

@@ -14,6 +14,7 @@ class Certificado extends Model
         'signature' ,
         'name',
         'email',
+        'certificado'
 
     ];
 }
