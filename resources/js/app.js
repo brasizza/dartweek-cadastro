@@ -97,19 +97,27 @@ for (let i = 0; i < hash.length; i += 4) {
 
     window.validateCode = function(code, index) {
         if (code.length == 4) {
+
+            console.log('ASDASD');
             if (pieces[index] == code) {
-                $('#icone_codigo_' + index).removeClass('fa-hourglass').remove('fa-circle-check').removeClass('fa-circle-xmark').removeClass('text-success').removeClass('text-danger').removeClass('text-primary').addClass('fa-circle-check').addClass('text-success');
+                $('#icone_codigo_' + index).attr('src', '/images/icones/correto.png');
                 if(index < 5){
                     $("#codigo_"+(parseInt(index)+1)).trigger('focus')
                 }
 
             } else {
-                $('#icone_codigo_' + index).removeClass('fa-hourglass').remove('fa-circle-check').removeClass('fa-circle-xmark').removeClass('text-success').removeClass('text-danger').removeClass('text-primary').addClass('fa-circle-xmark').addClass('text-danger');
+
+                $('#icone_codigo_' + index).attr('src', '/images/icones/erro.png');
+
+               // $('#icone_codigo_' + index).removeClass('fa-hourglass').remove('fa-circle-check').removeClass('fa-circle-xmark').removeClass('text-success').removeClass('text-danger').removeClass('text-primary').addClass('fa-circle-xmark').addClass('text-danger');
 
             }
 
             validateComplete();
 
+
+        }else{
+            $('#icone_codigo_' + index).attr('src', '/images/icones/sem_digitacao.png');
 
         }
 

@@ -14,39 +14,39 @@ class ConclusaoController extends Controller
         $aulas = [
             [
 
-                'imagem' => 'https://picsum.photos/seed/' . rand(1,4000) . '/400/200',
-                'titulo' => 'Aula 1 - BLA BLA'
+                'imagem' => '/images/senha1.png',
+                'titulo' => 'Senha da aula 1'
 
             ],
 
             [
 
-                'imagem' => 'https://picsum.photos/seed/' . rand(1,4000) . '/400/200',
-                'titulo' => 'Aula 2 - BLA BLA'
+                'imagem' => '/images/senha2.png',
+                'titulo' => 'Senha da aula 2'
 
             ],
             [
 
-                'imagem' => 'https://picsum.photos/seed/' . rand(1,4000) . '/400/200',
-                'titulo' => 'Aula 3 - BLA BLA'
+                'imagem' => '/images/senha3.png',
+                'titulo' => 'Senha da aula 3'
 
             ],
             [
 
-                'imagem' => 'https://picsum.photos/seed/' . rand(1,4000) . '/400/200',
-                'titulo' => 'Aula 4 - BLA BLA'
+                'imagem' => '/images/senha4.png',
+                'titulo' => 'Senha da aula 4'
 
             ],
             [
 
-                'imagem' => 'https://picsum.photos/seed/' . rand(1,4000) . '/400/200',
-                'titulo' => 'Aula 5 - BLA BLA'
+                'imagem' => '/images/senha5.png',
+                'titulo' => 'Senha da aula 5'
 
             ],
             [
 
-                'imagem' => 'https://picsum.photos/seed/' . rand(1,4000) . '/400/200',
-                'titulo' => 'LIVE DE ENCERRAMENTO!'
+                'imagem' => '/images/senha6.png',
+                'titulo' => 'Senha da Live de encerramento'
 
             ],
 

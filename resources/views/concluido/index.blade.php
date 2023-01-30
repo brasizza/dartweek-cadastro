@@ -44,7 +44,7 @@
                                 <div class="row">
                                     <div class="col-8"> <input type="text" class="form-control form-control-sm codigo" name="codigo_{{ $idx }}" id="codigo_{{$idx}}"
                                         placeholder=""  onkeyup="validateCode(this.value,'{{$idx}}')" maxlength="4" {{ ($idx == 0 ) ? 'autofocus' : '' }}></div>
-                                    <div class="col-4"> <i class="fa-solid fa-xl text-primary fa-hourglass icone_codigo" id="icone_codigo_{{$idx}}" ></i></div>
+                                    <div class="col-4"> <img src="/images/icones/sem_digitacao.png"   id="icone_codigo_{{$idx}}" width="30" ></i></div>
                                   </div>
                               </div>
 
