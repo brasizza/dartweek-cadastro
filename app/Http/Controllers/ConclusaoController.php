@@ -6,6 +6,20 @@ use Illuminate\Http\Request;
 
 class ConclusaoController extends Controller
 {
+
+
+    public function teste(){
+
+        $enviar = new CertificadoController();
+        $request = new Request([
+
+            'nome' => 'Marcus Brasizza' ,
+            'email' => 'mvbdesenvolvimento@gmail.com'
+        ]);
+        $enviar->enviar($request);
+
+        return view('emails.certificado');
+    }
     public function index()
     {
 
