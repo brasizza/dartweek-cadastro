@@ -13,8 +13,8 @@ class ConclusaoController extends Controller
         $enviar = new CertificadoController();
         $request = new Request([
 
-            'nome' => 'Marcus Brasizza' ,
-            'email' => 'mvbdesenvolvimento@gmail.com'
+            'name' => 'Rodrigo' ,
+            'email' => 'rodrigorahman@academiadoflutter.com.br'
         ]);
         $enviar->enviar($request);
 

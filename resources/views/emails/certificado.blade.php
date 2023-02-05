@@ -15,7 +15,7 @@
         <div style="background-color:#4c247c;color:white;padding-top:20px;padding-bottom:20px">
             <h2> DARTWEEK 2023!</h2>
         </div>
-        <div style="padding-top:20px">
+        <div style="padding-top:20px;  font-size:18px!important">
             <h2>Fala dev, Tudo bem?</h2>
             <span>Parabéns! Você está recebendo o seu Certificado por ter participado e concluído a <strong> Imersão
                     Dart Week!</strong></span><br>
