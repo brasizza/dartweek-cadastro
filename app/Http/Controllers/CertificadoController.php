@@ -41,6 +41,7 @@ class CertificadoController extends Controller
     public function resendEmail(Request $request){
         $certificado =  Certificado::where('email', $request->email)->first();
         if($certificado){
+
             $envio = new Request($certificado->toArray());
              $this->enviar($envio);
             return view('emails.certificado');
@@ -87,7 +88,6 @@ class CertificadoController extends Controller
       try{
         $certificado = $this->existeCertificadoEmail($request->email);
 
-        // dd($certificado);
         if($certificado){
 
             $signature = $certificado['signature'];
@@ -96,7 +96,8 @@ class CertificadoController extends Controller
         }
 
 
-        $pdf = new PdfController($request->nome, $request->email);
+
+        $pdf = new PdfController($request->name ?? $request->nome, $request->email);
         $generated = $pdf->generate($signature);
 
         $this->adicionarCertificado($request->nome,$request->email,$generated['signature']);
