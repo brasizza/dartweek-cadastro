@@ -38,6 +38,16 @@ class CertificadoController extends Controller
 
     }
 
+    public function resendEmail(Request $request){
+        $certificado =  Certificado::where('email', $request->email)->first();
+        if($certificado){
+            $envio = new Request($certificado->toArray());
+             $this->enviar($envio);
+            return view('emails.certificado');
+
+        }
+    }
+
     public function findBySignature(Request $request){
 
         $signature = $request->verify;

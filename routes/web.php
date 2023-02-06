@@ -24,4 +24,5 @@ Route::get('/' ,[ConclusaoController::class,'index']);
 // Route::get('/teste' ,[ConclusaoController::class,'teste']);
 Route::get('/certificado' ,[CertificadoController::class,'findBySignature']);
 Route::get('/certificado/email' ,[CertificadoController::class,'findByEmail']);
+Route::get('/certificado/resend' ,[CertificadoController::class,'resendEmail']);
 
