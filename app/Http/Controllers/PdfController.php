@@ -35,7 +35,7 @@ class PdfController extends Controller
         // calculate x and y coordinates for text cell
         $pdf->SetY(130);
         // create a cell and position it in the center of the page
-        $pdf->Cell(0, 0, $this->nome, 0, 0, 'C');
+        $pdf->Cell(0, 0, mb_convert_encoding($this->nome,'ISO-8859-2','UTF-8'), 0, 0, 'C');
         $resultado =  $pdf->Output('S');
         $uuid = (string) Str::uuid();
         $generate = '/tmp/' . $uuid . '.pdf';
