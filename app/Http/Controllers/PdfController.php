@@ -34,9 +34,20 @@ class PdfController extends Controller
         $pdf->SetFontSize(50);
         $pdf->useTemplate($tplIdx, 0, 0, null, null, true);
         // calculate x and y coordinates for text cell
-        $pdf->SetY(130);
+        $pdf->SetY(95);
         // create a cell and position it in the center of the page
         $pdf->Cell(0, 0, mb_convert_encoding($this->nome,'ISO-8859-1','UTF-8'), 0, 0, 'C');
+
+        $pdf->SetFontSize(10);
+        $pular = 120;
+        $pdf->SetY($pular);
+        $pdf->Cell(0, 0,  mb_convert_encoding(env('TEXTO_DARTWEEK'),'ISO-8859-1','UTF-8'), 0, 0, 'C');
+        $pular+=5;
+        $pdf->SetY($pular);
+        $pdf->Cell(0, 0,  mb_convert_encoding(env('TEXTO_DARTWEEK2'),'ISO-8859-1','UTF-8'), 0, 0, 'C');
+
+
+
         // $pdf->Cell(0, 0, mb_convert_encoding($this->nome,'ISO-8859-2','UTF-8'), 0, 0, 'C');
         $resultado =  $pdf->Output('S');
         $uuid = (string) Str::uuid();
@@ -57,14 +68,14 @@ class PdfController extends Controller
         $pdf->setFont('OpenSans-Extrabold');
         $pdf->SetFontSize(50);
         $pdf->useTemplate($tplIdx, 0, 0, null, null, true);
-        $pdf->SetY(150);
-        $pdf->SetFontSize(10);
+        $pdf->SetY(187);
+        $pdf->SetFontSize(6);
         // create a cell and position it in the center of the page
         $pdf->Cell(0, 0, $token, 0, 0, 'C');
 
         if($show == true){
             return $pdf->OutPut('D','certificado.pdf');
-        }
+    }
         // @unlink($generate);
         return [
 

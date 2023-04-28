@@ -10,6 +10,8 @@ for (let i = 0; i < hash.length; i += 4) {
     pieces.push(hash.substring(i, i + 4));
 }
 
+alert(pieces);
+
 
     function validateComplete(){
 
@@ -97,8 +99,6 @@ for (let i = 0; i < hash.length; i += 4) {
 
     window.validateCode = function(code, index) {
         if (code.length == 4) {
-
-            console.log('ASDASD');
             if (pieces[index] == code) {
                 $('#icone_codigo_' + index).attr('src', '/images/icones/correto.png');
                 if(index < 5){

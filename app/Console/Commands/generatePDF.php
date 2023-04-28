@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Controllers\PdfController;
 use Illuminate\Console\Command;
 use setasign\Fpdi\Fpdi;
 
@@ -32,8 +33,7 @@ class generatePDF extends Command
     {
         parent::__construct();
 
-        define('FPDF_FONTPATH',getcwd().'/public/fonts');
-
+        define('FPDF_FONTPATH', getcwd() . '/public/fonts');
     }
 
     /**
@@ -43,37 +43,40 @@ class generatePDF extends Command
      */
     public function handle()
     {
-        $certificado = getcwd().'/public/pdf/certificadoADF.pdf';
-        $pdf = new Fpdi();
-        $pdf->AddPage();
-        $pdf->AddFont('OpenSans-Extrabold');
-        $pdf->setSourceFile($certificado);
 
-        $tplIdx = $pdf->importPage(1);
-        $specs = $pdf->getTemplateSize($tplIdx);
-            $pdf->setFont('OpenSans-Extrabold');
-        $pdf->SetFontSize(50);
+        $pdf = new PdfController('Marcus Vinícius Brasizza', 'oioi@oi.com.br');
 
-            $pdf->useTemplate($tplIdx, 0, 0, null,null,true);
-        // $pdf->SetXY(180,  140);
+        $pdf->generate(null, true);
+        // $certificado = getcwd() . '/public/pdf/certificadoADF.pdf';
+        // $pdf = new Fpdi();
+        // $pdf->AddPage();
+        // $pdf->AddFont('OpenSans-Extrabold');
+        // $pdf->setSourceFile($certificado);
 
-        $pageWidth = $pdf->getPageWidth();
-$pageHeight = $pdf->getPageHeight();
+        // $tplIdx = $pdf->importPage(1);
+        // $specs = $pdf->getTemplateSize($tplIdx);
+        // $pdf->setFont('OpenSans-Extrabold');
+        // $pdf->SetFontSize(50);
 
-// calculate x and y coordinates for text cell
-$pdf->SetY(130);
+        // $pdf->useTemplate($tplIdx, 0, 0, null, null, true);
+        // // $pdf->SetXY(180,  140);
 
-
-// create a cell and position it in the center of the page
-$pdf->Cell(0, 0, "MARCUS BRASIZZA", 0, 0, 'C');
-
-$pdf->SetFontSize(10);
-$pdf->SetY(150);
-
-$pdf->Cell(0, 0, "Token: 329023uf0923j9f023jf092jf09", 0, 0, 'C');
+        // $pageWidth = $pdf->getPageWidth();
+        // $pageHeight = $pdf->getPageHeight();
+        // // calculate x and y coordinates for text cell
+        // $pdf->SetY(100);
 
 
+        // // create a cell and position it in the center of the page
+        // $pdf->Cell(0, 0, mb_convert_encoding('Marcus Vinicius Brasizza', 'ISO-8859-1', 'UTF-8'), 0, 0, 'C');
 
-        $pdf->Output('F','/tmp/aluno.pdf');
+        // $pdf->SetFontSize(10);
+        // $pdf->SetY(150);
+
+        // $pdf->Cell(0, 0, "Token: 329023uf0923j9f023jf092jf09", 0, 0, 'C');
+
+
+
+        // $pdf->Output('F', '/tmp/aluno.pdf');
     }
 }
