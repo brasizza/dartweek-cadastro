@@ -34,15 +34,15 @@ class PdfController extends Controller
         $pdf->SetFontSize(50);
         $pdf->useTemplate($tplIdx, 0, 0, null, null, true);
         // calculate x and y coordinates for text cell
-        $pdf->SetY(95);
+        $pdf->SetY(115);
         // create a cell and position it in the center of the page
         $pdf->Cell(0, 0, mb_convert_encoding($this->nome,'ISO-8859-1','UTF-8'), 0, 0, 'C');
 
-        $pdf->SetFontSize(10);
-        $pular = 120;
+        $pdf->SetFontSize(20);
+        $pular = 150;
         $pdf->SetY($pular);
         $pdf->Cell(0, 0,  mb_convert_encoding(env('TEXTO_DARTWEEK'),'ISO-8859-1','UTF-8'), 0, 0, 'C');
-        $pular+=5;
+        $pular+=10;
         $pdf->SetY($pular);
         $pdf->Cell(0, 0,  mb_convert_encoding(env('TEXTO_DARTWEEK2'),'ISO-8859-1','UTF-8'), 0, 0, 'C');
 
@@ -68,7 +68,7 @@ class PdfController extends Controller
         $pdf->setFont('OpenSans-Extrabold');
         $pdf->SetFontSize(50);
         $pdf->useTemplate($tplIdx, 0, 0, null, null, true);
-        $pdf->SetY(187);
+        $pdf->SetY(130);
         $pdf->SetFontSize(6);
         // create a cell and position it in the center of the page
         $pdf->Cell(0, 0, $token, 0, 0, 'C');
