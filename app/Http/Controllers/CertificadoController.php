@@ -115,26 +115,18 @@ class CertificadoController extends Controller
 
                 $signature = $certificado['signature'];
             } else {
-                $signature = null;
+                $signature =  $token = password_hash( implode('', $request->all()), CRYPT_BLOWFISH);
             }
 
-
-
-            $pdf = new PdfController($request->name ?? $request->nome, $request->email);
-            $generated = $pdf->generate($signature);
-
+            $generated['signature'] = $signature;
             $this->adicionarCertificado($request->nome, $request->email, $generated['signature']);
-            // Mail::send('emails.certificado', $data, function($message)use($data, $generated) {
-            //     $message->to($data["email"], $data["email"])
-            //             ->subject('SEU CERTIFICADO')
-            //             ->attachData(base64_decode($generated['output']), "certificado.pdf");
-
-            // });
             return  $this->successResponse($generated);
         } catch (Exception $e) {
-            //  dd($e);
+
+
+
             // Log::debug(print_r($e,true));
-            return  $this->errorResponse('FALHA' . print_r($e, true), 500);
+            return  $this->errorResponse('FALHA -' . $e->getMessage(), 500);
         }
     }
 }
