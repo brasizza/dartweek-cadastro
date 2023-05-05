@@ -13,7 +13,7 @@ class ConclusaoController extends Controller
         if($request->has('verify')){
 
             $certificado = new CertificadoController();
-            $existe = $certificado->existeCertificadoSignature($request->verify);
+            $existe = $certificado->existeCertificadoSignature(base64_decode($request->verify));
 
             if($existe){
                 return view('concluido.index')->with(['signature' => $request->verify]);

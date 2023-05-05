@@ -86,7 +86,9 @@ class CertificadoController extends Controller
 
     public function downloadCertificado(Request $request)
     {
-        return $this->findBySignature($request);
+
+        $requestSignature = new Request(['verify' => base64_decode($request->verify ?? '')]);
+        return $this->findBySignature($requestSignature);
     }
 
     // public function gerar(Request $request){
@@ -115,11 +117,13 @@ class CertificadoController extends Controller
 
                 $signature = $certificado['signature'];
             } else {
-                $signature =  $token = password_hash( implode('', $request->all()), CRYPT_BLOWFISH);
+                $signature =   password_hash( implode('', $request->all()), CRYPT_BLOWFISH);
             }
 
             $generated['signature'] = $signature;
             $this->adicionarCertificado($request->nome, $request->email, $generated['signature']);
+
+            $generated['signature'] = base64_encode($signature);
             return  $this->successResponse($generated);
         } catch (Exception $e) {
 
