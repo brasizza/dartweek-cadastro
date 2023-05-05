@@ -21,8 +21,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/' ,[ConclusaoController::class,'index']);
-// Route::get('/teste' ,[ConclusaoController::class,'teste']);
+Route::get('/certificado/conclusao' ,[ConclusaoController::class,'concluirCertificado']);
 Route::get('/certificado' ,[CertificadoController::class,'findBySignature']);
+Route::get('/certificado/download' ,[CertificadoController::class,'downloadCertificado'])->name('certificado.download');
 Route::get('/certificado/email' ,[CertificadoController::class,'findByEmail']);
 Route::get('/certificado/resend' ,[CertificadoController::class,'resendEmail']);
 

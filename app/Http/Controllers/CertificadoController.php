@@ -14,106 +14,127 @@ class CertificadoController extends Controller
 
     use ApiResponser;
 
-    private function existeCertificadoEmail($email){
+    private function existeCertificadoEmail($email)
+    {
 
         return Certificado::where('email', $email)->first();
+    }
 
+    public function existeCertificadoSignature($signature)
+    {
+
+        return Certificado::where('signature', $signature)->first();
     }
 
 
-    public function findByEmail(Request $request){
+    public function findByEmail(Request $request)
+    {
 
         $email = $request->email;
         $certificado =  Certificado::where('email', $email)->first();
-            if($certificado){
+        if ($certificado) {
 
-                $signature = $certificado['signature'];
+            $signature = $certificado['signature'];
             $pdf = new PdfController($certificado['name'], $certificado['email']);
-            return  $pdf->generate($signature,true);
-        }
-        else{
+            return  $pdf->generate($signature, true);
+        } else {
             return redirect('/');
         }
-
-
     }
 
-    public function resendEmail(Request $request){
+    public function resendEmail(Request $request)
+    {
         $certificado =  Certificado::where('email', $request->email)->first();
-        if($certificado){
+        if ($certificado) {
 
             $envio = new Request($certificado->toArray());
-             $this->enviar($envio);
+            $this->enviar($envio);
             return view('emails.certificado');
-
         }
     }
 
-    public function findBySignature(Request $request){
+    public function findBySignature(Request $request)
+    {
 
         $signature = $request->verify;
 
         $certificado =  Certificado::where('signature', $signature)->first();
 
-            if($certificado){
-
-                $signature = $certificado['signature'];
+        if ($certificado) {
+            $signature = $certificado['signature'];
             $pdf = new PdfController($certificado['name'], $certificado['email']);
-            return  $pdf->generate($signature,true);
-        }
-        else{
+            return  $pdf->generate($signature, true, 'certificado_' . $signature);
+        } else {
             return redirect('/');
         }
-
-
     }
 
-    private function adicionarCertificado($nome,$email,$signature){
+    private function adicionarCertificado($nome, $email, $signature)
+    {
 
         $certificado = Certificado::where('signature', $signature)->first();
 
-        if(!$certificado){
+        if (!$certificado) {
             Certificado::create([
                 'name' => $nome,
-                'email' =>$email,
+                'email' => $email,
                 'signature' => $signature
             ]);
         }
-
     }
-    public function enviar(Request $request){
+
+
+    public function downloadCertificado(Request $request)
+    {
+        return $this->findBySignature($request);
+    }
+
+    // public function gerar(Request $request){
+
+    //     try{
+    //     $pdf = new PdfController($request->name ?? $request->nome, $request->email);
+    //     $generated = $pdf->generate(null);
+
+    //     return 'OK';
+    //     }catch(Exception $e){
+
+    //         return 'ERRO';
+    //     }
+
+    // }
+
+    public function gerar(Request $request)
+    {
 
         $data = $request->all();
 
-      try{
-        $certificado = $this->existeCertificadoEmail($request->email);
+        try {
+            $certificado = $this->existeCertificadoEmail($request->email);
 
-        if($certificado){
+            if ($certificado) {
 
-            $signature = $certificado['signature'];
-        }else{
-            $signature = null;
+                $signature = $certificado['signature'];
+            } else {
+                $signature = null;
+            }
+
+
+
+            $pdf = new PdfController($request->name ?? $request->nome, $request->email);
+            $generated = $pdf->generate($signature);
+
+            $this->adicionarCertificado($request->nome, $request->email, $generated['signature']);
+            // Mail::send('emails.certificado', $data, function($message)use($data, $generated) {
+            //     $message->to($data["email"], $data["email"])
+            //             ->subject('SEU CERTIFICADO')
+            //             ->attachData(base64_decode($generated['output']), "certificado.pdf");
+
+            // });
+            return  $this->successResponse($generated);
+        } catch (Exception $e) {
+            //  dd($e);
+            // Log::debug(print_r($e,true));
+            return  $this->errorResponse('FALHA' . print_r($e, true), 500);
         }
-
-
-
-        $pdf = new PdfController($request->name ?? $request->nome, $request->email);
-        $generated = $pdf->generate($signature);
-
-        $this->adicionarCertificado($request->nome,$request->email,$generated['signature']);
-        Mail::send('emails.certificado', $data, function($message)use($data, $generated) {
-            $message->to($data["email"], $data["email"])
-                    ->subject('SEU CERTIFICADO')
-                    ->attachData(base64_decode($generated['output']), "certificado.pdf");
-
-        });
-        return  $this->successResponse('EMAIL ENVIADO COM SUCESSO!');
-
-      }catch(Exception $e){
-        dd($e);
-        // Log::debug(print_r($e,true));
-        return  $this->errorResponse('FALHA AO ENVIAR EMAIL' . print_r($e,true), 500);
-      }
-
     }
 }

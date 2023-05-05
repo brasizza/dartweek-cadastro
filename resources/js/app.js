@@ -10,8 +10,6 @@ for (let i = 0; i < hash.length; i += 4) {
     pieces.push(hash.substring(i, i + 4));
 }
 
-alert(pieces);
-
 
     function validateComplete(){
 
@@ -23,7 +21,6 @@ alert(pieces);
             if(stringCompleta == hash){
 
 
-                console.log("OPA IGUAIS!!!!");
                 confirmDialog();
 
         }
@@ -67,21 +64,28 @@ alert(pieces);
                     'nome' : nome,
 
                 },
-                url:'/api/enviar-certificado',
+                url:'/api/gerar-certificado',
                 dataType: 'text', // in ,my case the absence of this was the cause of failure
             })
                 // in case of successfully understood ajax response
                 .done(function (resultAjax) {
 
-                    Swal.fire('Sucesso', 'Certificado enviado para seu email', 'success');
-                    enviado = true;
-
-                    $('.codigo').each(function(index,element) {
-                        $(element).val('');
-                        if(index == 0){
-                            $(element).trigger('focus');
+                    Swal.fire('Sucesso', 'Certificado gerado com sucesso', 'success').then((result) => {
+                        if (result.isConfirmed) {
+                           let dados = JSON.parse(resultAjax);
+                           if(dados['signature'] != null){
+                                document.location.href = '/certificado/conclusao?verify='+dados['signature'];
+                           }
                         }
                     });
+                    // enviado = true;
+
+                    // $('.codigo').each(function(index,element) {
+                    //     $(element).val('');
+                    //     if(index == 0){
+                    //         $(element).trigger('focus');
+                    //     }
+                    // });
 
                 }) .fail(function (erordata) {
 

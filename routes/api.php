@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::post('enviar-certificado',  [CertificadoController::class,'enviar'])->name('certificado.enviar');
+Route::post('gerar-certificado',  [CertificadoController::class,'gerar'])->name('gerar.enviar');

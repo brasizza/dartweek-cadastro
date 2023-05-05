@@ -20,7 +20,7 @@ class PdfController extends Controller
     }
 
 
-    public function generate($signature = null, $show = false)
+    public function generate($signature = null, $show = false, $nome_certificado = null)
     {
 
         define('FPDF_FONTPATH', getcwd() . '/fonts/');
@@ -58,7 +58,7 @@ class PdfController extends Controller
         if($signature != null){
             $token = $signature;
         }else{
-        $token = (hash_file('sha256', ($generate)));
+        $token = (hash_file('sha1', ($generate)));
         }
         $pdf = new Fpdi();
         $pdf->AddPage();
@@ -74,12 +74,15 @@ class PdfController extends Controller
         $pdf->Cell(0, 0, $token, 0, 0, 'C');
 
         if($show == true){
-            return $pdf->OutPut('D','certificado.pdf');
+            $certificado = 'certificado.pdf';
+            if($nome_certificado != null){
+                $certificado = $nome_certificado.'.pdf';
+            }
+            return $pdf->OutPut('D',$certificado);
     }
         // @unlink($generate);
         return [
-
-            'output' => base64_encode($pdf->Output('S')),
+            // 'output' => base64_encode($pdf->Output('S')),
             'signature' => $token
         ];
     }

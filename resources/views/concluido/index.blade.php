@@ -1,87 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dart Week - 2023</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,700;1,400;1,700" display="swap"
-        rel="stylesheet">
-    <link href="/css/app.css" rel="stylesheet" crossorigin="anonymous">
-    <link href="/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <script src="/js/app.js?v=2"></script>
-
-    <script src="/js/bootstrap.min.js" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta http-equiv="refresh" content="5; URL='{{route('certificado.download',['verify' => $signature])}}'"/>
     <style>
+        body {
 
+            color: black;
+        }
     </style>
 </head>
 
-<body>
+<body
+ style="padding:0px;">
 
-    <div class="container-fluid mt-5  ">
-        <h3 class="text-center"><strong
-                style="font-family: Roboto, sans-serif; color: rgb(255, 255, 255); font-size: 40px;">Dart Week -
-                Delivery App</strong></h3>
-        <h4 class="text-center"><strong style="font-family: Roboto, sans-serif; color: rgb(255, 255, 255);"> Digite os
-                códigos passados nas aulas para receber o seu certificado! </strong></h4>
-        <div class="col col-lg-12 ">
-            <div class="row justify-content-md-center">
+    <div style="  text-align: center;  ">
 
-                @foreach ($aulas as $idx => $aula)
-                    <div class="col col-lg-{{$idx == 5 ? '4' : '3'}} text-center" style="margin-right:30px;!important">
-                        <div class="card mb-3"  @if ($idx == 5 ) style="background-color: #e0d599" @endif>
-                            <div class="card-header">
-                                {{$aula['titulo']}}
-                              </div>
-                            <img src="{{ $aula['imagem'] }}" alt="image" class="img-rounded img-responsive">
-                            <div class="card-footer text-center">
-                                <div class="row">
-                                    <div class="col-8"> <input type="text" class="form-control form-control-sm codigo" name="codigo_{{ $idx }}" id="codigo_{{$idx}}"
-                                        placeholder=""  onkeyup="validateCode(this.value,'{{$idx}}')" maxlength="4" {{ ($idx == 0 ) ? 'autofocus' : '' }}></div>
-                                    <div class="col-4"> <img src="/images/icones/sem_digitacao.png"   id="icone_codigo_{{$idx}}" width="30" ></i></div>
-                                  </div>
-                              </div>
+        <div style="background-color:#4c247c;color:white;padding-top:20px;padding-bottom:20px">
+            <img src="https://static-public.pages.hotmart.com/uploads/media/file/5339019/colorido_secondary_letra_branca.png" width="200">
 
-                        </div>
+            <h2> DARTWEEK 2023!</h2>
+        </div>
+        <div style="padding-top:20px;  font-size:18px!important">
+            <h2>Fala dev, Tudo bem?</h2>
+            <span>Parabéns! Você está recebendo o seu Certificado por ter participado e concluído a <strong> Imersão
+                    Dart Week!</strong></span><br>
+
+            <span>Esperamos fortemente que este seja apenas seu primeiro certificado,<br>e que você possa continuar
+                conosco nesta próxima turma da <strong>Academia do Flutter</strong>,<br>aprendendo desde o nível
+                Iniciante até o Avançado, continuando a usufruir da minha mentoria e se capacitando para o mercado de
+                trabalho,<br><strong>que cresce a cada dia mais!</strong></span>
+            <span>
+                <h3>Vem conhecer o Melhor e mais Completo curso de Dart e Flutter do Brasil</h3>
+
+            </span>
 
 
-                        {{-- <div class="col-lg-3 text-center" style="margin-right:30px;!important">
-                        <div class="col-12">
-                            <img src="{{ $aula['imagem'] }}" alt="image" class="img-thumbnail">
-                        </div>
-
-                        <div class="text-center">
-                            <div class="row  mt-4 mb-4 text-center offset-3  ">
-                              <div class="col-8 col-lg-8">
-                                <input type="text" class="form-control form-control-sm codigo" name="codigo_{{ $idx }}" id="codigo_{{$idx}}"
-                                placeholder=""  onkeyup="validateCode(this.value,'{{$idx}}')" maxlength="4" {{ ($idx == 0 ) ? 'autofocus' : '' }}>
-                              </div>
-                              <div class="col-1 col-lg-1">
-                                <i class="fa-solid fa-xl fa-hourglass icone_codigo" id="icone_codigo_{{$idx}}" ></i>
-                              </div>
-
-                            </div>
-                          </div>
-
-                    </div> --}}
-
-                      @if ($idx == 4 && $idx > 0 )
-                    </div>
-                    <div class="row justify-content-md-center">
-                    @endif
-                </div>
-
-                @endforeach
-            </div>
+            <span><strong>Conte conosco!</strong></span><br>
+            <span>Abraços,</span><br>
+            <span>Rodrigo Rahman e Equipe</span><br><br>
+            <span
+            style="display: inline-block;padding: .25em .4em;font-size: 100%;font-weight: 700;line-height: 1;text-align: center;white-space: nowrap;vertical-align: baseline;border-radius: .25rem;transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;color: #fff;background-color: #4c247c;color:white;">
+            <strong>
+                <h3 class="button"><a href="{{route('certificado.download',['verify' => $signature])}}"    style="color: white"  target="_blank">Baixe seu certificado aqui</a>
+                </h3>
+            </strong>
 
         </div>
-    </div>
 </body>
 
 </html>

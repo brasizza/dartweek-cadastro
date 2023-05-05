@@ -8,17 +8,23 @@ class ConclusaoController extends Controller
 {
 
 
-    public function teste(){
+    public function concluirCertificado(Request $request){
 
-        $enviar = new CertificadoController();
-        $request = new Request([
+        if($request->has('verify')){
 
-            'name' => 'Rodrigo' ,
-            'email' => 'rodrigorahman@academiadoflutter.com.br'
-        ]);
-        $enviar->enviar($request);
+            $certificado = new CertificadoController();
+            $existe = $certificado->existeCertificadoSignature($request->verify);
 
-        return view('emails.certificado');
+            if($existe){
+                return view('concluido.index')->with(['signature' => $request->verify]);
+
+            }else{
+                return redirect('/');
+
+            }
+        }else{
+
+        }
     }
     public function index()
     {
@@ -68,6 +74,6 @@ class ConclusaoController extends Controller
 
 
 
-        return view('concluido.index')->with(['aulas' => $aulas]);
+        return view('landpage.index')->with(['aulas' => $aulas]);
     }
 }
