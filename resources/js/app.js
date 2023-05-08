@@ -90,7 +90,7 @@ for (let i = 0; i < hash.length; i += 4) {
                 }) .fail(function (erordata) {
 
                     console.log(erordata);
-                     Swal.fire('Erro', 'Falha ao enviar o email, Caso o erro persista, envie uma mensagem!', 'error');
+                     Swal.fire('Erro', 'Falha ao emitir o certificado, Caso o erro persista, envie uma mensagem!', 'error');
                 })
 
         }

@@ -51,21 +51,10 @@ class ConclusaoController extends Controller
                 'titulo' => 'Senha da aula 3'
 
             ],
+
             [
 
                 'imagem' => '/images/senha4.png',
-                'titulo' => 'Senha da aula 4'
-
-            ],
-            [
-
-                'imagem' => '/images/senha5.png',
-                'titulo' => 'Senha da aula 5'
-
-            ],
-            [
-
-                'imagem' => '/images/senha6.png',
                 'titulo' => 'Senha da Live de encerramento'
 
             ],
