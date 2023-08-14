@@ -20,7 +20,8 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::get('/' ,[ConclusaoController::class,'index']);
+// Route::get('/' ,[ConclusaoController::class,'index']);
+Route::get('/' ,[ConclusaoController::class,'frase']);
 Route::get('/certificado/conclusao' ,[ConclusaoController::class,'concluirCertificado']);
 Route::get('/certificado' ,[CertificadoController::class,'findBySignature']);
 Route::get('/certificado/download' ,[CertificadoController::class,'downloadCertificado'])->name('certificado.download');

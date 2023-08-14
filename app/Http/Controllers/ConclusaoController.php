@@ -65,4 +65,15 @@ class ConclusaoController extends Controller
 
         return view('landpage.index')->with(['aulas' => $aulas]);
     }
+
+
+    public function frase()
+    {
+
+
+
+
+
+        return view('landpage.frase');
+    }
 }

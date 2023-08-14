@@ -4,6 +4,7 @@ var enviado = false;
 import Swal from 'sweetalert2';
 
 var hash = process.env.MIX_HASH_CERTIFICDO;
+var hashFrase = process.env.MIX_HASH_FRASE;
 
 let pieces = [];
 for (let i = 0; i < hash.length; i += 4) {
@@ -25,6 +26,23 @@ for (let i = 0; i < hash.length; i += 4) {
 
         }
         });
+    }
+
+    function validateCompleteFrase(frase){
+
+            if(frase == hashFrase){
+                confirmDialog();
+                return true;
+
+        }
+        return false;
+    }
+
+
+
+    window.errorDialog = function(){
+        Swal.fire('Erro', 'Frase inválida, por favor verifique a digitação e tente novamente', 'error');
+
     }
 
 
@@ -99,6 +117,18 @@ for (let i = 0; i < hash.length; i += 4) {
         Swal.fire('Certificado', 'Seu certificado já foi emitido', 'success');
 
     }
+}
+
+
+window.validadeFrase = function(frase) {
+        let fraseNova = new String(frase);
+        fraseNova = fraseNova.toUpperCase();
+      if(  validateCompleteFrase(fraseNova) == false){
+
+        errorDialog();
+      }
+
+
 }
 
     window.validateCode = function(code, index) {
