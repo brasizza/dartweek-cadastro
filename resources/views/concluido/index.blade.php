@@ -1,6 +1,5 @@
 <html>
 <head>
-    <meta http-equiv="refresh" content="5; URL='{{route('certificado.download',['verify' => $signature])}}'"/>
     <style>
         body {
 
