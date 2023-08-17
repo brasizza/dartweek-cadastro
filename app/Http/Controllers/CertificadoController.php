@@ -59,7 +59,7 @@ class CertificadoController extends Controller
         $signature = $request->verify;
 
         $certificado =  Certificado::where('signature', $signature)->first();
-
+        dd($certificado);
         if ($certificado) {
             $signature = $certificado['signature'];
             $pdf = new PdfController($certificado['name'], $certificado['email']);
