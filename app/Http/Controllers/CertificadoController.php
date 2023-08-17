@@ -89,7 +89,6 @@ class CertificadoController extends Controller
 
         $requestSignature = new Request(['verify' => base64_decode($request->verify ?? '')]);
 
-        dd($requestSignature);
         return $this->findBySignature($requestSignature);
     }
 
