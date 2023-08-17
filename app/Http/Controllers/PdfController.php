@@ -23,6 +23,7 @@ class PdfController extends Controller
     public function generate($signature = null, $show = false, $nome_certificado = null)
     {
         try {
+
             define('FPDF_FONTPATH', getcwd() . '/fonts/');
             $certificado = getcwd() . '/pdf/certificadoADF.pdf';
             $pdf = new Fpdi();
@@ -72,13 +73,12 @@ class PdfController extends Controller
             $pdf->SetFontSize(6);
             // create a cell and position it in the center of the page
             $pdf->Cell(0, 0, $token, 0, 0, 'C');
-
             if ($show == true) {
                 $certificado = 'certificado.pdf';
                 if ($nome_certificado != null) {
                     $certificado = $nome_certificado . '.pdf';
                 }
-                return $pdf->OutPut('D', $certificado);
+                return $pdf->OutPut('I', $certificado);
             }
             // @unlink($generate);
             return [
