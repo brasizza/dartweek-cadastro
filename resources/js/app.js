@@ -30,7 +30,7 @@ for (let i = 0; i < hash.length; i += 4) {
 
     function validateCompleteFrase(frase){
 
-            if(frase == hashFrase){
+            if(frase.toUpperCase() == hashFrase.toUpperCase()){
                 confirmDialog();
                 return true;
 
