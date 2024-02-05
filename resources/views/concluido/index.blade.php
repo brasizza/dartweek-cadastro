@@ -16,12 +16,11 @@
         <div style="background-color:#4c247c;color:white;padding-top:20px;padding-bottom:20px">
             <img src="https://static-public.pages.hotmart.com/uploads/media/file/5339019/colorido_secondary_letra_branca.png" width="200">
 
-            <h2> DARTWEEK 2023!</h2>
+            <h2> Flutter Experience 2024!</h2>
         </div>
         <div style="padding-top:20px;  font-size:18px!important">
             <h2>Fala dev, Tudo bem?</h2>
-            <span>Parabéns! Você está recebendo o seu Certificado por ter participado e concluído a <strong> Imersão
-                    Dart Week!</strong></span><br>
+            <span>Parabéns! Você está recebendo o seu Certificado por ter participado e concluído a <strong>Flutter experience!</strong></span><br>
 
             <span>Esperamos fortemente que este seja apenas seu primeiro certificado,<br>e que você possa continuar
                 conosco nesta próxima turma da <strong>Academia do Flutter</strong>,<br>aprendendo desde o nível
@@ -29,6 +28,7 @@
                 trabalho,<br><strong>que cresce a cada dia mais!</strong></span>
             <span>
                 <h3>Vem conhecer o Melhor e mais Completo curso de Dart e Flutter do Brasil</h3>
+                <h3 class="button"><a href="https://academiadoflutter.com.br"    style="color: white"  target="_blank">https://academiadoflutter.com.br</a>
 
             </span>
 
