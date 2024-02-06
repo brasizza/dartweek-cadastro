@@ -25,8 +25,7 @@
 <body>
     <div class="container text-center">
         <h3 class="text-center"><strong
-                style="font-family: Roboto, sans-serif; color: rgb(255, 255, 255); font-size: 40px;">Dart Week
-                2023</strong></h3>
+                style="font-family: Roboto, sans-serif; color: rgb(255, 255, 255); font-size: 40px;">Flutter Experience!</strong></h3>
         <h4 class="text-center"><strong style="font-family: Roboto, sans-serif; color: rgb(255, 255, 255); text-align:center" > Digite a
                 frase completa abaixo para receber o seu certificado! </strong></h4>
 
