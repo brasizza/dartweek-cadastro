@@ -13,7 +13,7 @@
 
     <div style="  text-align: center;  ">
         <div style="background-color:#4c247c;color:white;padding-top:20px;padding-bottom:20px">
-            <h2> Flutter experience 2024!</h2>
+            <h2> Flutter Experience 2024!</h2>
         </div>
         <div style="padding-top:20px;  font-size:18px!important">
             <h2>Fala dev, Tudo bem?</h2>

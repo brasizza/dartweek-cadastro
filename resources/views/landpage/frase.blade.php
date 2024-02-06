@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dart Week - 2023</title>
+    <title>Flutter Experience!</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,700;1,400;1,700" display="swap"
         rel="stylesheet">
     <link href="/css/app.css" rel="stylesheet" crossorigin="anonymous">
