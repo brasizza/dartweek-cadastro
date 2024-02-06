@@ -39,13 +39,15 @@ class PdfController extends Controller
             // create a cell and position it in the center of the page
             $pdf->Cell(0, 0, mb_convert_encoding($this->nome, 'ISO-8859-1', 'UTF-8'), 0, 0, 'C');
 
-            $pdf->SetFontSize(20);
-            $pular = 150;
-            $pdf->SetY($pular);
-            $pdf->Cell(0, 0,  mb_convert_encoding(env('TEXTO_DARTWEEK'), 'ISO-8859-1', 'UTF-8'), 0, 0, 'C');
+            $pdf->SetFontSize(18);
+            $pular = 140;
+            $pdf->SetXY(30,$pular);
+            $pdf->MultiCell(0, 10,  mb_convert_encoding(env('TEXTO_DARTWEEK'), 'ISO-8859-1', 'UTF-8'), 0, 'J');
             $pular += 10;
-            $pdf->SetY($pular);
-            $pdf->Cell(0, 0,  mb_convert_encoding(env('TEXTO_DARTWEEK2'), 'ISO-8859-1', 'UTF-8'), 0, 0, 'C');
+            $pdf->SetXY(30,$pular);
+            $pdf->MultiCell(0, 10,  mb_convert_encoding(env('TEXTO_DARTWEEK2'), 'ISO-8859-1', 'UTF-8'),0,'J');
+
+
 
 
 
